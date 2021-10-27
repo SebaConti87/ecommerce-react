@@ -4,7 +4,7 @@ import CartWidget from "./CartWidget";
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Container>
         <Navbar.Brand href="#home">
           <img src={logo} className="logo" alt="logo" />
@@ -18,7 +18,7 @@ const NavBar = () => {
         </Navbar.Collapse>
         <CartWidget />
       </Container>
-    </Navbar>
+    </nav>
   );
 };
 
