@@ -1,4 +1,6 @@
-const Item = ({ id, title, description, price, pictureUrl }) => {
+import ItemCount from "../ItemCount/ItemCount";
+
+const Item = ({ id, title, description, price, pictureUrl, stock }) => {
   return (
     <div className="card card-item" key={id}>
       <img
@@ -11,7 +13,8 @@ const Item = ({ id, title, description, price, pictureUrl }) => {
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
         <p className="card-text price">${price}</p>
-        <a className="btn btn-primary">Ver detalle</a>
+        <ItemCount stock={stock} />
+        <a className="btn btn-outline-primary w-100 mt-2">Ver detalle</a>
       </div>
     </div>
   );

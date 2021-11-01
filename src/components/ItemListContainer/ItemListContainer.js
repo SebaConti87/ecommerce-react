@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ItemCount from "./ItemCount";
-import { ItemList } from "./ItemList";
+import ItemCount from "./ItemCount/ItemCount";
+import { ItemList } from "./ItemList/ItemList";
 
 export const ItemListContainer = ({ greeting }) => {
   const [stock, setStock] = useState(10);
@@ -15,7 +15,6 @@ export const ItemListContainer = ({ greeting }) => {
     <>
       <p>{greeting}</p>
       <div className="container list-container">
-        {/* <ItemCount onAdd={handleAddToCart} stock={stock} /> */}
         <ItemList />
       </div>
     </>

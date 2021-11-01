@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import apiCall from "./data/apiCall";
-import Item from "./Item";
+import apiCall from "../../data/apiCall";
+import Item from "../Item/Item";
+import Spinner from "../../Spinner/Spinner";
 
 export const ItemList = () => {
   const [data, setData] = useState([]);
@@ -18,9 +19,9 @@ export const ItemList = () => {
   return (
     <>
       {loading ? (
-        <h1> Cargando... </h1>
+        <Spinner />
       ) : (
-        data && data.map((product) => <Item {...product} />)
+        data && data.map((product) => <Item {...product} stock={data} />)
       )}
     </>
   );
