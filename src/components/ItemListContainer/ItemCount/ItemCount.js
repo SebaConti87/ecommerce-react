@@ -1,12 +1,11 @@
 import { useState } from "react";
 
 const ItemCount = ({ onAdd, stock }) => {
-  console.log(stock.length);
   const [amount, setAmount] = useState(0);
 
   const handleAdd = (e) => {
     e.preventDefault();
-    if (amount < stock.length) {
+    if (amount < stock) {
       const value = amount + 1;
       setAmount(value);
     }
@@ -24,8 +23,7 @@ const ItemCount = ({ onAdd, stock }) => {
     <div className="col">
       <div className=" d-flex justify-content-center">
         <button
-          className="btn btn-primary"
-          disabled={stock.length === 0}
+          className={`btn btn-primary ${amount === 0 ? "disabled" : null}`}
           onClick={handleSubtract}
         >
           -
@@ -35,8 +33,7 @@ const ItemCount = ({ onAdd, stock }) => {
         </span>
 
         <button
-          className="btn btn-primary"
-          disabled={stock.length === 0}
+          className={`btn btn-primary ${amount === stock ? "disabled" : null}`}
           onClick={handleAdd}
         >
           +
@@ -45,7 +42,7 @@ const ItemCount = ({ onAdd, stock }) => {
 
       <button
         className="btn btn-warning w-100 mt-2"
-        disabled={stock.length === 0}
+        disabled={stock && stock.length === 0}
         onClick={() => onAdd(amount)}
       >
         Agregar al carrito

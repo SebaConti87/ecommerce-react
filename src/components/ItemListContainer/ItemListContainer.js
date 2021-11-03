@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ItemCount from "./ItemCount/ItemCount";
 import { ItemList } from "./ItemList/ItemList";
 
 export const ItemListContainer = ({ greeting }) => {
@@ -12,11 +11,8 @@ export const ItemListContainer = ({ greeting }) => {
   };
 
   return (
-    <>
-      <p>{greeting}</p>
-      <div className="container list-container">
-        <ItemList />
-      </div>
-    </>
+    <div className="container list-container">
+      <ItemList />
+    </div>
   );
 };

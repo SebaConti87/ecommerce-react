@@ -4,7 +4,7 @@ const apiCall = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(data);
-    }, 3000);
+    }, 2000);
   });
 };
 export default apiCall;
