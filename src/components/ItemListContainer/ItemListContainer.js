@@ -11,7 +11,7 @@ export const ItemListContainer = ({ greeting }) => {
   };
 
   return (
-    <div className="container list-container">
+    <div className="container list-container p-0">
       <ItemList />
     </div>
   );

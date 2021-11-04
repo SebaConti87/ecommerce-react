@@ -1,15 +1,11 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import "./styles/item.css";
 
 const Item = ({ id, title, description, price, pictureUrl, stock }) => {
   return (
-    <div className="card card-item" key={id}>
-      <img
-        src={pictureUrl}
-        className="card-img-top"
-        alt={title}
-        style={{ width: "16rem" }}
-      />
+    <div className="card card-item" key={id} style={{ width: "16rem" }}>
+      <img src={pictureUrl} className="card-img-top p-2" alt={title} />
       <div className="card-body card-body-item">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>

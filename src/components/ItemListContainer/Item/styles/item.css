@@ -1,0 +1,4 @@
+.card-item img {
+  height: 16rem;
+  object-fit: contain;
+}

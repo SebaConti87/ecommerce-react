@@ -1,11 +1,12 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../../assets/logo.png";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
+import "./styles/navbar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light p-0">
+    <Navbar bg="light" expand="lg" className=" p-0">
       <Container>
         <Link to="/">
           <Navbar.Brand href="#home">
@@ -13,15 +14,18 @@ const NavBar = () => {
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="d-flex justify-content-end">
+
+        <Navbar.Collapse id="basic-navbar-nav" className="my-collapse">
+          <Nav>
             <Nav.Link href="#home">Nosotros</Nav.Link>
-            {/* <Nav.Link href="#link">Productos</Nav.Link> */}
+            <NavDropdown.Divider />
+            <Nav.Link href="#home">Contacto</Nav.Link>
+            <NavDropdown.Divider />
+            <CartWidget />
           </Nav>
         </Navbar.Collapse>
-        <CartWidget />
       </Container>
-    </nav>
+    </Navbar>
   );
 };
 
