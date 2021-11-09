@@ -1,7 +1,18 @@
+import { useState } from "react";
 import Spinner from "../../Spinner/Spinner";
 import ItemCount from "../../ItemListContainer/ItemCount/ItemCount";
+import { useParams } from "react-router";
 
 const ItemDetail = ({ itemDetail }) => {
+  const [amount, setAmount] = useState(0);
+
+  const { id } = useParams();
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    console.log(`Agregando ${amount} del producto ${id}`);
+  };
+
   return (
     <>
       {itemDetail ? (
@@ -10,7 +21,8 @@ const ItemDetail = ({ itemDetail }) => {
             <img
               className="card-img-top"
               src={itemDetail.pictureUrl}
-              style={{ width: "23rem" }}
+              style={{ width: "23rem", height: "23rem" }}
+              alt={itemDetail.title}
             />
           </div>
           <div className="col card mb-3 p-4">
@@ -20,10 +32,12 @@ const ItemDetail = ({ itemDetail }) => {
               <p className="card-text lead">{itemDetail.description}</p>
               <label>Stock: {itemDetail.amount}</label>
             </div>
-            <ItemCount stock={itemDetail.amount} />
-            <div className="card-body p-0 m-0">
-              <button className="btn btn-primary w-100 mt-3">Comprar</button>
-            </div>
+            <ItemCount
+              stock={itemDetail.amount}
+              onAdd={handleAddToCart}
+              amount={amount}
+              setAmount={setAmount}
+            />
           </div>
         </section>
       ) : (

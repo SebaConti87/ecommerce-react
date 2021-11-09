@@ -9,7 +9,7 @@ const NavBar = () => {
     <Navbar bg="light" expand="lg" className=" p-0">
       <Container>
         <Link to="/">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img src={logo} className="logo" alt="logo" />
           </Navbar.Brand>
         </Link>
@@ -17,9 +17,9 @@ const NavBar = () => {
 
         <Navbar.Collapse id="basic-navbar-nav" className="my-collapse">
           <Nav>
-            <Nav.Link href="#home">Nosotros</Nav.Link>
+            <Nav.Link>Nosotros</Nav.Link>
             <NavDropdown.Divider />
-            <Nav.Link href="#home">Contacto</Nav.Link>
+            <Nav.Link>Contacto</Nav.Link>
             <NavDropdown.Divider />
             <CartWidget />
           </Nav>

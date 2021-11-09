@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
-const ItemCount = ({ onAdd, stock }) => {
-  const [amount, setAmount] = useState(0);
+const ItemCount = ({ onAdd, stock, amount, setAmount }) => {
+  const { id } = useParams();
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -18,36 +19,48 @@ const ItemCount = ({ onAdd, stock }) => {
       setAmount(value);
     }
   };
-
   return (
-    <div className="col">
-      <div className=" d-flex justify-content-center">
-        <button
-          className={`btn btn-primary ${amount === 0 ? "disabled" : null}`}
-          onClick={handleSubtract}
-        >
-          -
-        </button>
-        <span className="text-center m-3">
-          <b className="heading">{amount}</b>
-        </span>
-
-        <button
-          className={`btn btn-primary ${amount === stock ? "disabled" : null}`}
-          onClick={handleAdd}
-        >
-          +
-        </button>
-      </div>
-
-      <button
-        className="btn btn-warning w-100 mt-2"
-        disabled={stock && stock.length === 0}
-        onClick={() => onAdd(amount)}
-      >
-        Agregar al carrito
-      </button>
-    </div>
+    <>
+      {id !== undefined ? (
+        <div className="col">
+          <div className=" d-flex justify-content-center">
+            <button
+              className={`btn btn-primary ${amount === 0 ? "disabled" : null}`}
+              onClick={handleSubtract}
+            >
+              -
+            </button>
+            <span className="text-center m-3">
+              <b className="heading">{amount}</b>
+            </span>
+            <button
+              className={`btn btn-primary ${
+                amount === stock ? "disabled" : null
+              }`}
+              onClick={handleAdd}
+            >
+              +
+            </button>
+          </div>
+          {amount !== 0 ? (
+            <>
+              <Link to="/cart">
+                <button
+                  className="btn btn-warning w-100 mt-2"
+                  disabled={stock && stock.length === 0}
+                  onClick={onAdd}
+                >
+                  Agregar al carrito
+                </button>
+              </Link>
+              <Link to="/cart">
+                <button className="btn btn-primary w-100 mt-3">Comprar</button>
+              </Link>
+            </>
+          ) : null}
+        </div>
+      ) : null}
+    </>
   );
 };
 

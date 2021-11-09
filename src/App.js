@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import "bootswatch/dist/lux/bootstrap.min.css";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
           </Route>
           <Redirect to="/" />
         </Switch>

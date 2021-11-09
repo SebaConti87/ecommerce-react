@@ -7,9 +7,8 @@ import { useParams } from "react-router";
 const ItemDetailContainer = () => {
   const [data, setData] = useState([]);
   const [itemDetail, setItemDetail] = useState(null);
-  const [loading, setLoading] = useState(false);
 
-  const { id } = useParams();
+  const { id, category } = useParams();
 
   const itemFilter = () => {
     if (data) {
@@ -25,13 +24,12 @@ const ItemDetailContainer = () => {
   }, [data]);
 
   useEffect(() => {
-    setLoading(true);
     apiCall()
       .then((res) => {
         setData(res);
       })
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+      .finally(() => console.log("Fin del llamado"));
   }, []);
 
   return (
@@ -40,7 +38,7 @@ const ItemDetailContainer = () => {
         <li className="breadcrumb-item">
           <Link to="/">Home</Link>
         </li>
-        <li className="breadcrumb-item">Categoria</li>
+        <li className="breadcrumb-item">Categoría</li>
         <li className="breadcrumb-item">Item</li>
         <li className="breadcrumb-item">Detalle</li>
       </ol>
